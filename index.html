@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Logical Reasoning & Set Operations Assistant</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-container" role="main" aria-label="Logical Reasoning and Set Operations Assistant">
+  <h1>Logical Reasoning & Set Operations Based Personal Assistant</h1>
+
+  <section>
+    <h2>Welcome to the Logical Reasoning Assistant!</h2>
+    <p>This tool helps you with propositional logic, set operations, predicate logic, and relations.</p>
+    <p>Use the sections below to perform various logical operations.</p>
+    <div class="sections">
+        <div class="section-selectors">
+            <button class="section-btn active" data-target="prop-logic-title">Propositional Logic</button>
+            <button class="section-btn" data-target="set-ops-title">Set Operations</button>
+            <button class="section-btn" data-target="pred-logic-title">Predicate Logic</button>
+            <button class="section-btn" data-target="relations-title">Relations</button>
+        </div>
+    </div>
+  </section>
+
+  <section class="content" aria-labelledby="prop-logic-title">
+    <h2 id="prop-logic-title">Propositional Logic - Truth Tables</h2>
+    <label for="prop-expression">Enter logical expression:</label>
+    <input type="text" id="prop-expression" placeholder="e.g. (p && q) || !r" aria-describedby="prop-logic-note" />
+    <div class="small-note" id="prop-logic-note">Use variables like p, q, r with && (AND), || (OR), ! (NOT), and parentheses.</div>
+    <button id="generate-truth-table-btn">Generate Truth Table</button>
+    <pre class="result-box" id="truth-table-result" aria-live="polite" aria-atomic="true"></pre>
+  </section>
+
+  <footer>
+    &copy; 2025 Logical Reasoning Assistant
+    <h2> Built with ❤️ by <a target="_blank" href="https://github.com/alihassancods">@alihassancodes</a></h2>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
