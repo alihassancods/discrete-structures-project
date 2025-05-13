@@ -1,39 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>Logical Reasoning & Set Operations Assistant</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logical Reasoning and Set Operations Based Personal Assistant</title>
+    <link rel="stylesheet" href="stylev2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
-<div class="app-container" role="main" aria-label="Logical Reasoning and Set Operations Assistant">
-  <h1>Logical Reasoning & Set Operations Based Personal Assistant</h1>
+<body class="dark-theme">
+    <header>
+        <h1>Logical Reasoning and Set Operations Based Personal Assistant</h1>
+        <div class="theme-switch" id="theme-switch">
+            <span class="icon">💡</span>
+            <input type="checkbox" id="theme-toggle">
+            <label for="theme-toggle" class="toggle-label"></label>
+            <span class="icon">🌙</span>
+        </div>
+    </header>
 
-  <section>
-    <h2>Welcome to the Logical Reasoning Assistant!</h2>
-    <p>This tool helps you with propositional logic, set operations, predicate logic, and relations.</p>
-    <p>Use the sections below to perform various logical operations.</p>
-    <div class="sections">
-        <div class="section-selectors">
-            <button class="section-btn active" data-target="prop-logic-title">Propositional Logic</button>
-            <button class="section-btn" data-target="set-ops-title">Set Operations</button>
-            <button class="section-btn" data-target="pred-logic-title">Predicate Logic</button>
-            <button class="section-btn" data-target="relations-title">Relations</button>
+    <div class="container">
+        <div class="tabs">
+            <button class="tab-button active" data-tab="propositional-logic">Propositional Logic</button>
+            <button class="tab-button" data-tab="set-operations">Set Operations</button>
+            <button class="tab-button" data-tab="predicate-logic">Predicate Logic</button>
+            <button class="tab-button" data-tab="relations">Relations</button>
+        </div>
+
+        <div class="tab-content active" id="propositional-logic">
+            <div class="glass-card">
+                <h2>Propositional Logic Evaluator</h2>
+                <p class="input-hint">Use variables (p, q, r...), operators (AND, OR, NOT, IF, THEN, IFF), and parentheses. Example: (p AND q) IF THEN r</p>
+                <div class="input-group">
+                    <label for="logic-expression">Logical Expression:</label>
+                    <input type="text" id="logic-expression" placeholder="(p AND q) IF THEN r">
+                    <div class="input-feedback" id="logic-expression-feedback"></div>
+                </div>
+                <button id="evaluate-logic">Evaluate</button>
+                <div class="output-area" id="logic-output">
+                    <h3>Truth Table:</h3>
+                    <div class="code-block" id="logic-truth-table"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="set-operations">
+            <div class="glass-card">
+                <h2>Set Operations Engine</h2>
+                <p class="input-hint">Enter sets using curly braces and commas (e.g., {1, a, "apple"}). Enter Universal Set for Complement.</p>
+                 <div class="input-group">
+                    <label for="set-u">Universal Set (U):</label>
+                    <input type="text" id="set-u" placeholder="{1, 2, 3, 4, 5, a, b}">
+                    <div class="input-feedback" id="set-u-feedback"></div>
+                </div>
+                <div class="input-group">
+                    <label for="set-a">Set A:</label>
+                    <input type="text" id="set-a" placeholder="{1, 2, a}">
+                     <div class="input-feedback" id="set-a-feedback"></div>
+                </div>
+                 <div class="input-group">
+                    <label for="set-b">Set B:</label>
+                    <input type="text" id="set-b" placeholder="{2, 3, b}">
+                     <div class="input-feedback" id="set-b-feedback"></div>
+                </div>
+
+                <div class="set-operations-buttons">
+                    <button data-op="union">Union (A ∪ B)</button>
+                    <button data-op="intersection">Intersection (A ∩ B)</button>
+                    <button data-op="difference-ab">Difference (A - B)</button>
+                    <button data-op="difference-ba">Difference (B - A)</button>
+                    <button data-op="complement-a">Complement (A')</button>
+                     <button data-op="complement-b">Complement (B')</button>
+                </div>
+
+                <div class="output-area" id="set-output">
+                     <h3>Results:</h3>
+                     <div class="code-block" id="set-results"></div>
+                </div>
+            </div>
+        </div>
+
+         <div class="tab-content" id="predicate-logic">
+            <div class="glass-card">
+                <h2>Predicate Logic Validator</h2>
+                 <p class="input-hint">Enter predicate using variables (x, y...), common predicates (EVEN, ODD, PRIME, DIVISIBLE_BY, >, <, =, >=, <=), and logical operators (AND, OR, NOT, IF, THEN, IFF). Define domain as a set. Quantifiers: FOR ALL, EXISTS. Example: FOR ALL x, IF EVEN(x) THEN DIVISIBLE_BY(x, 2)</p>
+                 <div class="input-group">
+                    <label for="predicate-statement">Predicate Statement:</label>
+                    <input type="text" id="predicate-statement" placeholder="EXISTS x, PRIME(x) AND >(x, 10)">
+                     <div class="input-feedback" id="predicate-statement-feedback"></div>
+                </div>
+                 <div class="input-group">
+                    <label for="predicate-domain">Domain:</label>
+                    <input type="text" id="predicate-domain" placeholder="{1, 2, 3, 4, 11, 12}">
+                     <div class="input-feedback" id="predicate-domain-feedback"></div>
+                </div>
+                 <button id="evaluate-predicate">Evaluate</button>
+                 <div class="output-area" id="predicate-output">
+                     <h3>Evaluation Result:</h3>
+                     <div class="code-block" id="predicate-result"></div>
+                 </div>
+            </div>
+        </div>
+
+         <div class="tab-content" id="relations">
+            <div class="glass-card">
+                <h2>Relations Checker & Visualizer</h2>
+                <p class="input-hint">Define a set A, and a relation R as a set of ordered pairs (e.g., { (1,2), (2,3) }). Pairs use parentheses.</p>
+                 <div class="input-group">
+                    <label for="relation-set">Set A:</label>
+                    <input type="text" id="relation-set" placeholder="{1, 2, 3, 4}">
+                     <div class="input-feedback" id="relation-set-feedback"></div>
+                </div>
+                 <div class="input-group">
+                    <label for="relation-pairs">Relation R (set of pairs):</label>
+                    <input type="text" id="relation-pairs" placeholder="{(1,1), (1,2), (2,2), (3,4), (4,4)}">
+                     <div class="input-feedback" id="relation-pairs-feedback"></div>
+                </div>
+                 <button id="check-relation">Check Properties</button>
+                 <button id="visualize-relation">Visualize Relation</button>
+
+                 <div class="output-area" id="relation-output">
+                     <h3>Properties:</h3>
+                     <div class="code-block" id="relation-properties"></div>
+                      <h3>Visualization:</h3>
+                     <div class="relation-graph" id="relation-graph">
+                         <!-- SVG or Canvas will be rendered here -->
+                     </div>
+                 </div>
+            </div>
+        </div>
+
+    </div> <!-- end container -->
+
+     <!-- Help/Documentation Modal -->
+    <div id="helpModal" class="modal">
+        <div class="modal-content glass-card">
+            <span class="close-button">×</span>
+            <h2>System Documentation & Help</h2>
+            <div class="collapsible-docs">
+                 <button class="collapsible">Propositional Logic Input</button>
+                 <div class="content">
+                     <p><strong>Variables:</strong> Single letters (p, q, r, s, t).</p>
+                     <p><strong>Operators:</strong><br>
+                     <code>AND</code> (&)<br>
+                     <code>OR</code> (|)<br>
+                     <code>NOT</code> (! or ~)<br>
+                     <code>IF THEN</code> (->)<br>
+                     <code>IFF</code> (<-> or <=>)</p>
+                     <p>Parentheses <code>()</code> for grouping.</p>
+                     <p>Case-insensitive for operators.</p>
+                 </div>
+
+                 <button class="collapsible">Set Operations Input</button>
+                 <div class="content">
+                     <p>Sets are entered as comma-separated values within curly braces <code>{}</code>. Elements can be numbers, strings (quoted or unquoted if simple), etc.</p>
+                     <p>Example: <code>{1, 2, "apple", banana}</code></p>
+                     <p>Universal Set (U) is required for Complement operations.</p>
+                 </div>
+
+                 <button class="collapsible">Predicate Logic Input</button>
+                 <div class="content">
+                     <p><strong>Quantifiers:</strong> <code>FOR ALL</code>, <code>EXISTS</code>.</p>
+                     <p><strong>Variables:</strong> Single letters (x, y, z).</p>
+                      <p><strong>Predicates:</strong><br>
+                      Basic: <code>EVEN(var)</code>, <code>ODD(var)</code>, <code>PRIME(var)</code>, <code>DIVISIBLE_BY(var1, var2)</code>.<br>
+                      Comparison: <code>>(var1, var2)</code>, <code><(var1, var2)</code>, <code>=(var1, var2)</code>, <code>>=(var1, var2)</code>, <code><=(var1, var2)</code>.<br>
+                      Logical operators are same as Propositional Logic.</p>
+                      <p>Domain is entered as a Set.</p>
+                 </div>
+
+                  <button class="collapsible">Relations Input</button>
+                 <div class="content">
+                     <p>Set A is entered as a standard Set.</p>
+                     <p>Relation R is entered as a set of ordered pairs within curly braces <code>{}</code>. Each pair is <code>(element1, element2)</code>.</p>
+                     <p>Example: <code>{(a,b), (b,c), (c,a)}</code></p>
+                 </div>
+                 
+            </div>
         </div>
     </div>
-  </section>
+    
+    <button id="openHelp" class="help-button">?</button>
+    
 
-  <section class="content" aria-labelledby="prop-logic-title">
-    <h2>Please select one of the sections above</h2>
-  </section>
-
-  <footer>
-     <h3> &copy; 2025 Logical Reasoning Assistant </h3>
-    <h2> Built with ❤️ by <a target="_blank" href="https://github.com/alihassancods">@alihassancodes</a></h2>
-  </footer>
-</div>
-
-<script src="script.js"></script>
+    <script src="scriptv2.js"></script>
 </body>
 </html>
